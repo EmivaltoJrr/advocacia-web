@@ -1,4 +1,5 @@
-const API_URL = 'http://localhost:8080/api/processos';
+const BASE_URL = import.meta.env.VITE_API_URL;
+const API_URL = `${BASE_URL}/api/processos`;
 
 export const ProcessoService = {
     
@@ -6,7 +7,11 @@ export const ProcessoService = {
     listarTodos: async () => {
         try {
             const response = await fetch(API_URL);
-            if (!response.ok) throw new Error(`Erro na requisição: ${response.status}`);
+            
+            if (!response.ok) {
+                throw new Error(`Erro na requisição: ${response.status}`);
+            }
+            
             return await response.json();
         } catch (error) {
             console.error('Erro ao listar processos:', error);
@@ -20,14 +25,16 @@ export const ProcessoService = {
             const response = await fetch(API_URL, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json', // Avisa o Spring Boot que estamos enviando JSON
+                    'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(processo) // Converte o objeto do React para texto JSON
+                body: JSON.stringify(processo)
             });
             
-            if (!response.ok) throw new Error(`Erro ao salvar: ${response.status}`);
+            if (!response.ok) {
+                throw new Error(`Erro ao salvar: ${response.status}`);
+            }
             
-            // Como o seu backend retorna 'void', não precisamos fazer 'response.json()' aqui.
+            // Como o backend Spring retorna 'void', retornamos true para confirmar o sucesso
             return true; 
         } catch (error) {
             console.error('Erro ao salvar processo:', error);

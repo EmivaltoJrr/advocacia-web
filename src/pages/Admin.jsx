@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom'; // Importando o navegador de rotas
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { Button } from 'primereact/button';
@@ -11,6 +12,7 @@ import { ProcessoService } from '../services/ProcessoService';
 
 export default function Admin() {
   const [processos, setProcessos] = useState([]);
+  const navigate = useNavigate(); // Instanciando o navegador
   
   // --- Estados do Formulário ---
   const [modalVisivel, setModalVisivel] = useState(false);
@@ -22,6 +24,14 @@ export default function Admin() {
 
   const toast = useRef(null); // Para mostrar as mensagens de sucesso/erro
 
+  // --- Bloqueio de Segurança (Verifica Login) ---
+  useEffect(() => {
+    const estaLogado = localStorage.getItem('usuarioLogado');
+    if (!estaLogado) {
+      navigate('/login'); // Se não tiver a chave de acesso, manda de volta pro login
+    }
+  }, [navigate]);
+
   // --- Carregar Dados ---
   const carregarProcessos = async () => {
     try {
@@ -32,6 +42,7 @@ export default function Admin() {
     }
   };
 
+  // Carrega os processos assim que a página abre
   useEffect(() => {
     carregarProcessos();
   }, []);
@@ -64,6 +75,12 @@ export default function Admin() {
     return new Date(rowData.dataAbertura).toLocaleDateString('pt-BR');
   };
 
+  // --- Fazer Logout ---
+  const fazerLogout = () => {
+    localStorage.removeItem('usuarioLogado'); // Apaga o crachá do navegador
+    navigate('/'); // Redireciona para a Home (Portfólio)
+  };
+
   // Botões do rodapé do Modal
   const footerModal = (
     <div>
@@ -83,7 +100,8 @@ export default function Admin() {
         <h2 style={{ color: '#334155', margin: 0 }}>Painel Administrativo</h2>
         <div>
           <Button label="Novo Processo" icon="pi pi-plus" severity="success" onClick={() => setModalVisivel(true)} style={{ marginRight: '10px' }} />
-          <Button label="Sair" icon="pi pi-sign-out" severity="danger" onClick={() => window.location.href='/'} />
+          {/* Botão Sair atualizado com a função de Logout */}
+          <Button label="Sair" icon="pi pi-sign-out" severity="danger" onClick={fazerLogout} />
         </div>
       </div>
 
