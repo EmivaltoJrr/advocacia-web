@@ -1,107 +1,98 @@
 import { Button } from 'primereact/button';
 import { Card } from 'primereact/card';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'; // Importação adicionada
+import './styles.css';
 
 export default function Home() {
-  const navigate = useNavigate(); // Ferramenta do React para trocar de página sem recarregar
+  const navigate = useNavigate(); // Ferramenta de navegação ativada
 
   // Função para abrir o WhatsApp
   const abrirWhatsApp = () => {
-    const numero = "5511999999999"; // Substitua pelo número real do escritório
-    const msg = "Olá, gostaria de agendar uma consultoria jurídica.";
+    const numero = "556185306262"; // Substitua pelo seu número
+    const msg = "Olá. Gostaria de solicitar uma análise de viabilidade jurídica com o Dr. Luiz Câmber.";
     window.open(`https://wa.me/${numero}?text=${encodeURIComponent(msg)}`, '_blank');
   };
 
+  // Função para abrir a página do Formulário de Pré-Cadastro
+  const abrirFormulario = () => {
+    navigate('/cadastro'); 
+  };
+
   return (
-    <div style={{ fontFamily: 'sans-serif', backgroundColor: '#f8fafc', minHeight: '100vh' }}>
+    <div className="home-container">
       
-      {/* 1. BARRA DE NAVEGAÇÃO (Topo) */}
-      <header style={{ 
-        display: 'flex', 
-        justifyContent: 'space-between', 
-        alignItems: 'center', 
-        padding: '1rem 2rem', 
-        backgroundColor: 'white', 
-        boxShadow: '0 2px 4px rgba(0,0,0,0.1)' 
-      }}>
-        <h2 style={{ margin: 0, color: '#1e293b', display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <i className="pi pi-briefcase" style={{ fontSize: '1.5rem', color: '#3b82f6' }}></i>
-          Luiz Claudio Advocacia
-        </h2>
-        
-        {/* Botão de Login no Canto Superior Direito */}
-        <Button 
-          label="Acesso Restrito" 
-          icon="pi pi-lock" 
-          className="p-button-text p-button-secondary" 
-          onClick={() => navigate('/login')} 
-        />
+      {/* 1. BARRA DE NAVEGAÇÃO (Fixa e Centralizada) */}
+      <header className="header-premium">
+        <div className="logo-container">
+          <h1 className="logo-nome">LUIZ CÂMBER</h1>
+          <span className="logo-especialidade">ADVOCACIA E INTELIGÊNCIA JURÍDICA</span>
+        </div>
       </header>
 
       {/* 2. DESTAQUE PRINCIPAL (Hero Section) */}
-      <section style={{ textAlign: 'center', padding: '5rem 1rem', backgroundColor: '#1e293b', color: 'white' }}>
-        <h1 style={{ fontSize: '3rem', margin: '0 0 1rem 0' }}>Defesa Técnica, Ética e Eficiente</h1>
-        <p style={{ fontSize: '1.2rem', maxWidth: '700px', margin: '0 auto 2rem auto', color: '#cbd5e1', lineHeight: '1.6' }}>
-          Protegendo seus direitos com estratégia e transparência. 
-          Especialistas em resolução de conflitos e acompanhamento completo de processos do início ao fim.
-        </p>
-        <Button 
-          label="Fale com um Especialista" 
-          icon="pi pi-whatsapp" 
-          severity="success" 
-          size="large" 
-          onClick={abrirWhatsApp} 
-        />
-      </section>
-
-      {/* 3. COMO ESTRUTURAMOS SEU CASO (Cards informativos) */}
-      <section style={{ maxWidth: '1200px', margin: '4rem auto', padding: '0 2rem' }}>
-        <h2 style={{ textAlign: 'center', color: '#334155', marginBottom: '3rem', fontSize: '2rem' }}>
-          Como Trabalhamos o Seu Caso
+      <section className="hero-section">
+        <h2 className="hero-titulo">
+          Análise Estratégica e Rigor Técnico na Proteção do seu Patrimônio
         </h2>
+        <p className="hero-texto">
+          Unimos a experiência jurídica à precisão da inteligência de dados (BI) para oferecer soluções resolutivas em casos de alta complexidade.
+        </p>
         
-        {/* Grid para deixar os cards lado a lado no PC e um embaixo do outro no Celular */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem' }}>
+        {/* Agrupamento dos Botões */}
+        <div className="botoes-hero">
+          <Button 
+            label="Agendar Consultoria Estratégica" 
+            icon="pi pi-whatsapp" 
+            className="btn-dourado"
+            onClick={abrirWhatsApp} 
+          />
           
-          <Card style={{ textAlign: 'center', boxShadow: '0 4px 6px rgba(0,0,0,0.05)' }}>
-            <i className="pi pi-comments" style={{ fontSize: '2.5rem', color: '#3b82f6', marginBottom: '1rem' }}></i>
-            <h3 style={{ color: '#1e293b', marginTop: 0 }}>1. Consultoria Inicial</h3>
-            <p style={{ color: '#64748b', lineHeight: '1.5' }}>
-              Reunião sigilosa para entender os detalhes do seu problema e traçar os primeiros cenários possíveis.
-            </p>
-          </Card>
-
-          <Card style={{ textAlign: 'center', boxShadow: '0 4px 6px rgba(0,0,0,0.05)' }}>
-            <i className="pi pi-search" style={{ fontSize: '2.5rem', color: '#3b82f6', marginBottom: '1rem' }}></i>
-            <h3 style={{ color: '#1e293b', marginTop: 0 }}>2. Análise Técnica</h3>
-            <p style={{ color: '#64748b', lineHeight: '1.5' }}>
-              Nossa equipe estuda a jurisprudência, analisa contratos e reúne as provas necessárias para o caso.
-            </p>
-          </Card>
-
-          <Card style={{ textAlign: 'center', boxShadow: '0 4px 6px rgba(0,0,0,0.05)' }}>
-            <i className="pi pi-file" style={{ fontSize: '2.5rem', color: '#3b82f6', marginBottom: '1rem' }}></i>
-            <h3 style={{ color: '#1e293b', marginTop: 0 }}>3. Ação ou Acordo</h3>
-            <p style={{ color: '#64748b', lineHeight: '1.5' }}>
-              Elaboramos a petição com máxima agilidade técnica, priorizando sempre a solução mais rápida.
-            </p>
-          </Card>
-
-          <Card style={{ textAlign: 'center', boxShadow: '0 4px 6px rgba(0,0,0,0.05)' }}>
-            <i className="pi pi-sync" style={{ fontSize: '2.5rem', color: '#3b82f6', marginBottom: '1rem' }}></i>
-            <h3 style={{ color: '#1e293b', marginTop: 0 }}>4. Acompanhamento</h3>
-            <p style={{ color: '#64748b', lineHeight: '1.5' }}>
-              Monitoramento constante. Você é avisado sobre cada movimentação processual de forma clara e objetiva.
-            </p>
-          </Card>
-
+          <Button 
+            label="Preencher Formulário de Pré-Cadastro" 
+            icon="pi pi-file-edit" 
+            className="btn-secundario"
+            onClick={abrirFormulario} 
+          />
         </div>
       </section>
 
-      {/* 4. RODAPÉ BÁSICO */}
-      <footer style={{ backgroundColor: '#0f172a', color: '#94a3b8', textAlign: 'center', padding: '2rem', marginTop: '4rem' }}>
-        <p>&copy; {new Date().getFullYear()} Luiz Claudio Advocacia. Todos os direitos reservados.</p>
-        <p style={{ fontSize: '0.9rem' }}>OAB/DF 123.456</p>
+      {/* 3. ÁREAS DE ATUAÇÃO (Cards) */}
+      <section className="areas-section">
+        <h3 className="areas-titulo">Áreas de Atuação Especializada</h3>
+        
+        <div className="areas-grid">
+          <Card className="card-premium">
+            <i className="pi pi-home card-icone"></i>
+            <h4 className="card-titulo">Gestão Patrimonial e Sucessões</h4>
+            <p className="card-texto">
+              Atuação em Inventários e Planejamento Sucessório com foco na organização e preservação de bens familiares, utilizando métodos analíticos para a partilha de ativos.
+            </p>
+          </Card>
+
+          <Card className="card-premium">
+            <i className="pi pi-shield card-icone"></i>
+            <h4 className="card-titulo">Direito Digital e Proteção de Dados</h4>
+            <p className="card-texto">
+              Consultoria em incidentes com Pix, fraudes em meios de pagamento e adequação à LGPD, garantindo conformidade e segurança institucional.
+            </p>
+          </Card>
+
+          <Card className="card-premium">
+            <i className="pi pi-chart-line card-icone"></i>
+            <h4 className="card-titulo">Recuperação de Ativos</h4>
+            <p className="card-texto">
+              Instrução técnica em execuções, utilizando inteligência de dados e investigação patrimonial para subsidiar pedidos judiciais de constrição de bens.
+            </p>
+          </Card>
+        </div>
+      </section>
+
+      {/* 4. RODAPÉ ÉTICO (Padrão OAB) */}
+      <footer className="footer-premium">
+        <h4 className="footer-nome">LUIZ CÂMBER AMARO</h4>
+        <p className="footer-texto">Atendimento presencial em Brasília e Consultoria Digital em todo o território nacional.</p>
+        <p className="footer-nota">OAB/DF 87.579</p>
+        <p className="footer-copyright">&copy; {new Date().getFullYear()} Todos os direitos reservados. Site em conformidade com o Provimento 205/2021 da OAB.</p>
       </footer>
 
     </div>

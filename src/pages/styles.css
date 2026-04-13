@@ -1,0 +1,291 @@
+/* PALETA DE CORES PREMIUM E FONTES */
+:root {
+  --azul-oxford: #002147;
+  --dourado-acetinado: #C5A059;
+  --branco-papel: #FAFAFA;
+  --grafite: #333333;
+  --cinza-claro: #64748b;
+  --texto-claro: #e2e8f0;
+  --texto-mutado: #94a3b8;
+}
+
+/* CONTAINER PRINCIPAL */
+.home-container {
+  font-family: "Playfair Display", "Segoe UI", sans-serif;
+  background-color: var(--branco-papel);
+  min-height: 100vh;
+}
+
+/* BARRA DE NAVEGAÇÃO (HEADER FIXO E CENTRALIZADO) */
+.header-premium {
+  display: flex;
+  justify-content: center; /* Centraliza o conteúdo */
+  align-items: center;
+  padding: 1.5rem 3rem;
+  background-color: rgba(255, 255, 255, 0.95); /* Levemente transparente */
+  backdrop-filter: blur(8px); /* Efeito de vidro temperado moderno */
+  border-bottom: 1px solid rgba(0, 33, 71, 0.1);
+  position: sticky; /* Fixa no topo */
+  top: 0;
+  z-index: 1000; /* Garante que fique acima de tudo */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03); /* Sombra muito suave */
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza o texto do logo */
+  text-align: center;
+}
+
+.logo-nome {
+  margin: 0;
+  color: var(--azul-oxford);
+  font-size: 1.8rem;
+  letter-spacing: 2px; /* Aumentei o espaçamento para ficar mais imponente */
+}
+
+.logo-especialidade {
+  color: var(--dourado-acetinado);
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+  font-weight: bold;
+  margin-top: 0.2rem;
+}
+
+/* DESTAQUE PRINCIPAL (HERO SECTION) */
+.hero-section {
+  text-align: center;
+  padding: 7rem 2rem;
+  background-color: var(--azul-oxford);
+  color: white;
+}
+
+.hero-titulo {
+  font-size: 3rem;
+  margin: 0 auto 1.5rem auto;
+  max-width: 900px;
+  line-height: 1.2;
+}
+
+.hero-texto {
+  font-size: 1.2rem;
+  max-width: 750px;
+  margin: 0 auto 2rem auto;
+  color: var(--texto-claro);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* CONTAINER DOS BOTÕES */
+.botoes-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem; /* Espaço entre os botões */
+  margin-top: 2rem;
+}
+
+/* BOTÃO PRINCIPAL (WHATSAPP) */
+.btn-dourado {
+  background-color: var(--dourado-acetinado) !important;
+  border-color: var(--dourado-acetinado) !important;
+  color: var(--azul-oxford) !important;
+  font-weight: bold !important;
+  padding: 1rem 2.5rem !important;
+  font-size: 1.1rem !important;
+  border-radius: 4px !important;
+}
+
+/* BOTÃO SECUNDÁRIO (FORMS) */
+.btn-secundario {
+  background-color: transparent !important;
+  border: 1px solid var(--texto-mutado) !important;
+  color: var(--texto-claro) !important;
+  font-weight: 300 !important;
+  padding: 0.8rem 2rem !important;
+  font-size: 1rem !important;
+  border-radius: 4px !important;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.btn-secundario:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-color: white !important;
+  color: white !important;
+}
+
+/* ÁREAS DE ATUAÇÃO */
+.areas-section {
+  max-width: 1200px;
+  margin: 5rem auto;
+  padding: 0 2rem;
+}
+
+.areas-titulo {
+  text-align: center;
+  color: var(--azul-oxford);
+  margin-bottom: 4rem;
+  font-size: 2.2rem;
+}
+
+.areas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+}
+
+.card-premium {
+  border-top: 4px solid var(--dourado-acetinado);
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+  border-radius: 8px;
+}
+
+.card-icone {
+  font-size: 2.5rem;
+  color: var(--azul-oxford);
+  margin-bottom: 1.5rem;
+}
+
+.card-titulo {
+  color: var(--azul-oxford);
+  margin-top: 0;
+  font-size: 1.3rem;
+}
+
+.card-texto {
+  color: var(--grafite);
+  line-height: 1.6;
+}
+
+/* RODAPÉ (FOOTER) */
+.footer-premium {
+  background-color: var(--azul-oxford);
+  color: var(--texto-claro);
+  text-align: center;
+  padding: 3rem 1rem;
+  margin-top: 4rem;
+}
+
+.footer-nome {
+  color: var(--dourado-acetinado);
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+}
+
+.footer-texto {
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer-nota {
+  font-size: 0.8rem;
+  color: var(--texto-mutado);
+}
+
+.footer-copyright {
+  font-size: 0.8rem;
+  color: var(--texto-mutado);
+  margin-top: 2rem;
+}
+
+
+/* --- ESTILOS DO FORMULÁRIO DE PRÉ-CADASTRO --- */
+
+.form-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 1rem;
+  background-color: var(--branco-papel);
+}
+
+.form-card {
+  background-color: white;
+  max-width: 800px;
+  width: 100%;
+  padding: 3rem;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 33, 71, 0.08); /* Sombra elegante */
+  border-top: 4px solid var(--azul-oxford);
+}
+
+.form-titulo {
+  color: var(--azul-oxford);
+  font-size: 2rem;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.form-subtitulo {
+  color: var(--grafite);
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: 1rem;
+}
+
+.form-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-field label {
+  color: var(--azul-oxford);
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.full-width {
+  flex: 1 1 100%;
+}
+
+.half-width {
+  flex: 1 1 calc(50% - 0.75rem); /* Divide em 2 colunas */
+}
+
+/* Ajustes no PrimeReact para combinar com nosso visual */
+.p-inputtext, .p-dropdown, .p-inputtextarea {
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 4px !important;
+  padding: 0.75rem !important;
+  font-family: inherit !important;
+}
+
+.p-inputtext:focus, .p-dropdown:focus, .p-inputtextarea:focus {
+  border-color: var(--dourado-acetinado) !important;
+  box-shadow: 0 0 0 1px var(--dourado-acetinado) !important;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  flex-direction: row;
+}
+
+/* Responsividade para o Formulário em Celulares */
+@media screen and (max-width: 768px) {
+  .half-width {
+    flex: 1 1 100%;
+  }
+  .form-card {
+    padding: 2rem 1.5rem;
+  }
+  .form-actions {
+    flex-direction: column-reverse;
+    gap: 1rem;
+  }
+  .form-actions button {
+    width: 100%;
+  }
+}
